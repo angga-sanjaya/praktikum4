@@ -1,27 +1,28 @@
-# LAPORAN TUGAS MATA KULIAH PEMROGRAMAN WEB 2
-## Pertemuan 4 – Constructor dan $this pada PHP (PBO)
+# 📘 Laporan Tugas Pemrograman Web 2
+### Pertemuan 4 – Constructor dan `$this` pada PHP (PBO)
 
 ---
 
-### 👤 IDENTITAS MAHASISWA
-* **Nama** : Angga Sanjaya
-* **NIM** : 202457201012
-* **Kelas / Semester** : Semester V
-* **Program Studi** : Sistem Informasi
-* **Perguruan Tinggi** : Institut Teknologi Mojosari (ITM) Nganjuk
-* **Dosen Pengampu** : Nafis Sururi, M. Kom.
+## 👤 Identitas Mahasiswa
+
+| | |
+| :--- | :--- |
+| **Nama** | Angga Sanjaya |
+| **NIM** | 202457201012 |
+| **Kelas / Semester** | Semester V |
+| **Program Studi** | Sistem Informasi |
+| **Perguruan Tinggi** | Institut Teknologi Mojosari (ITM) Nganjuk |
+| **Dosen Pengampu** | Nafis Sururi, M. Kom. |
 
 ---
 
-### 📥 UNDUH DOKUMEN MODUL ACUAN
-> **Link Download Modul Praktikum:**  
-> [Download MODUL 4 PRAKTIKUM PWEB2_CONSTRUCTOR.docx](URL_MODUL_SAYA_DI_SINI)  
-*(Silakan ganti `URL_MODUL_SAYA_DI_SINI` dengan link Google Drive / lokasi file Anda)*
+## 📥 Modul Acuan
+
+> 📄 [Download MODUL 4 PRAKTIKUM PWEB2_CONSTRUCTOR.docx](https://bit.ly/3Vtr9AX)
 
 ---
 
-### 🗺️ PETA / ROADMAP STRUKTUR FOLDER
-Berikut adalah susunan direktori file proyek pada folder `praktikum4`:
+## 🗺️ Struktur Folder
 
 ```text
 htdocs/
@@ -33,87 +34,95 @@ htdocs/
         ├── latihan4.php
         ├── LatihanPemahaman.php
         └── pbl_produk.php
+```
 
 ---
-```text
 
-### 📂 DESKRIPSI FILE KODE PROGRAM & PEMETAAN MODUL
+## 📂 Deskripsi File & Pemetaan Modul
 
-| Nama File PHP | Bagian Modul | Deskripsi Fungsi & Logika Kode |
+| File | Bagian Modul | Deskripsi |
 | :--- | :--- | :--- |
-| **`latihan1.php`** | **8.1 Praktikum 1** | Membuktikan bahwa method `__construct()` secara otomatis langsung dieksekusi oleh PHP pada saat objek pertama kali dibuat (*instansiasi*). |
-| **`latihan2.php`** | **8.2 Praktikum 2** | Menunjukkan cara menggunakan constructor untuk langsung mengisi nilai properti milik objek secara internal saat pembuatan objek. |
-| **`latihan3.php`** | **8.3 Praktikum 3** | Mengimplementasikan parameter pada constructor agar pengisian nilai properti dapat dilakukan secara dinamis untuk setiap objek yang berbeda. |
-| **`latihan4.php`** | **8.4 Praktikum 4** | Menerapkan constructor dengan banyak parameter (NIM, Nama, Prodi, Semester) untuk menginisialisasi seluruh properti kelas secara fleksibel. |
-| **`LatihanPemahaman.php`** | **9. Latihan Pemahaman** | Penyelesaian kode rumpang pada Class `Buku` untuk menghubungkan parameter constructor dengan properti `$judul` dan `$penulis`. |
-| **`pbl_produk.php`** | **10, 11, & 12. PBL Produk** | Implementasi studi kasus *Problem Based Learning* (Sistem Data Produk) menggunakan constructor 4 parameter serta penambahan method `hitungNilaiStok()`. |
+| `latihan1.php` | 8.1 Praktikum 1 | Membuktikan `__construct()` otomatis dieksekusi saat objek dibuat (*instansiasi*). |
+| `latihan2.php` | 8.2 Praktikum 2 | Constructor untuk langsung mengisi nilai properti objek saat pembuatan. |
+| `latihan3.php` | 8.3 Praktikum 3 | Parameter pada constructor agar nilai properti dinamis untuk tiap objek. |
+| `latihan4.php` | 8.4 Praktikum 4 | Constructor dengan banyak parameter (NIM, Nama, Prodi, Semester). |
+| `LatihanPemahaman.php` | 9. Latihan Pemahaman | Melengkapi kode rumpang Class `Buku` (`$judul` dan `$penulis`) lewat constructor. |
+| `pbl_produk.php` | 10, 11 & 12. PBL Produk | Studi kasus *Problem Based Learning* (Data Produk): constructor 4 parameter + method `hitungNilaiStok()`. |
 
 ---
 
-### 💡 PEMBAHASAN MATERI & PERBANDINGAN LOGIKA PROGRAM
+## 💡 Pembahasan Materi
 
-#### A. Pokok Bahasan Utama Modul 4 & Peran Sintaks/Operator
-Modul 4 berfokus pada **efisiensi inisialisasi objek** dan **pengelolaan konteks objek** dalam Pemrograman Berorientasi Objek (PBO) berbasis PHP. Terdapat tiga komponen utama yang dipakai:
+### A. Pokok Bahasan & Peran Sintaks
 
-1. **Method Spesial Constructor (`public function __construct(...)`)**
-   * **Role/Fungsi:** Bertindak sebagai *magic method* yang otomatis dipanggil oleh PHP saat perintah `new NamaClass(...)` dieksekusi.
-   * **Tujuan:** Menerima argumen dari luar dan langsung menginisialisasi properti objek pada saat objek dilahirkan.
-2. **Kata Kunci `$this`**
-   * **Role/Fungsi:** Bertindak sebagai *pseudo-variable* yang merujuk pada **objek yang sedang aktif/menjalankan method tersebut**.
-   * **Tujuan:** Membedakan antara variabel parameter lokal milik method dengan properti asli milik kelas (contoh: `$this->nama = $nama;`).
-3. **Operator Access Object (`->`)**
-   * **Role/Fungsi:** Digunakan untuk mengakses properti atau memanggil method dari suatu objek.
+Modul 4 berfokus pada **efisiensi inisialisasi objek** dan **pengelolaan konteks objek** dalam PBO PHP.
+
+| Komponen | Fungsi | Tujuan |
+| :--- | :--- | :--- |
+| `__construct()` | *Magic method* yang otomatis dipanggil saat `new NamaClass(...)` dijalankan. | Menerima argumen dan langsung mengisi properti saat objek dibuat. |
+| `$this` | *Pseudo-variable* yang merujuk ke objek yang sedang menjalankan method. | Membedakan parameter lokal dengan properti kelas (`$this->nama = $nama;`). |
+| `->` | Operator akses objek. | Mengakses properti atau memanggil method dari objek. |
+
+### B. Sebelum vs Sesudah Menggunakan Constructor
+
+#### ❌ Sebelum (Modul 2 & 3)
+
+Objek dibuat kosong, lalu properti diisi satu per satu dari luar kelas.
+
+```php
+$mhs1 = new Mahasiswa();
+$mhs1->nim = "2301001";
+$mhs1->nama = "Andi";
+$mhs1->prodi = "Sistem Informasi";
+$mhs1->semester = 3;
+```
+
+**Kelemahan:** kode berulang (*redundant*) dan ada risiko properti lupa diisi sehingga data tidak konsisten.
+
+#### ✅ Sesudah (Modul 4)
+
+Instansiasi (`new`) dan pengisian properti dilakukan dalam satu langkah.
+
+```php
+class Mahasiswa {
+    public $nim;
+    public $nama;
+    public $prodi;
+    public $semester;
+
+    public function __construct($nim, $nama, $prodi, $semester) {
+        $this->nim = $nim;
+        $this->nama = $nama;
+        $this->prodi = $prodi;
+        $this->semester = $semester;
+    }
+}
+
+$mhs1 = new Mahasiswa("2301001", "Andi", "Sistem Informasi", 3);
+```
+
+**Kelebihan:** kode lebih ringkas, rapi, dan semua properti wajib terisi sejak objek dibuat.
+
+#### 🛒 Penerapan pada `pbl_produk.php`
+
+Nilai `kode`, `nama`, `harga`, dan `stok` dikirim langsung saat objek dibuat:
+
+```php
+$produk1 = new Produk("P001", "Laptop", 7000000, 10);
+```
+
+Properti tersebut diolah oleh method `hitungNilaiStok()`:
+
+```php
+public function hitungNilaiStok() {
+    return $this->harga * $this->stok;
+}
+```
 
 ---
 
-#### B. Perbandingan Konkret: Sebelum vs Sesudah Menggunakan Constructor
+## ✅ Kesimpulan
 
-##### 1. Sebelum Menggunakan Constructor (Modul 2 & 3)
-Objek diciptakan dalam kondisi "kosong" terlebih dahulu, baru kemudian propertinya diisi satu per satu dari luar kelas:
-
-* **Contoh Kode (Cara Lama):**
-  * `$mhs1 = new Mahasiswa();`
-  * `$mhs1->nim = "2301001";`
-  * `$mhs1->nama = "Andi";`
-  * `$mhs1->prodi = "Sistem Informasi";`
-  * `$mhs1->semester = 3;`
-
-* **Kelemahan:** Membutuhkan banyak baris kode (*code redundancy*), serta berisiko ada properti yang lupa diisi sehingga data objek menjadi tidak konsisten.
-
-##### 2. Sesudah Menggunakan Constructor (Modul 4)
-Proses instansiasi objek (`new`) dan pengisian nilai properti dilakukan **dalam satu langkah tunggal yang atomik**:
-
-* **Pendefinisian Class dengan Constructor:**
-  * `class Mahasiswa {`
-  * `    public $nim;`
-  * `    public $nama;`
-  * `    public $prodi;`
-  * `    public $semester;`
-  * `    public function __construct($nim, $nama, $prodi, $semester) {`
-  * `        $this->nim = $nim;`
-  * `        $this->nama = $nama;`
-  * `        $this->prodi = $prodi;`
-  * `        $this->semester = $semester;`
-  * `    }`
-  * `}`
-
-* **Penginstansian Objek (Cara Baru):**
-  * `$mhs1 = new Mahasiswa("2301001", "Andi", "Sistem Informasi", 3);`
-
-* **Kelebihan:** Kode menjadi jauh lebih ringkas, rapi, serta menjamin seluruh properti wajib terisi sejak awal objek dibuat.
-
-##### 3. Penerapan pada Kode Program (`pbl_produk.php`)
-Pada studi kasus Sistem Data Produk (`pbl_produk.php`), pengisian nilai `kode`, `nama`, `harga`, dan `stok` dikirimkan secara langsung saat objek dibuat:
-* `$produk1 = new Produk("P001", "Laptop", 7000000, 10);`
-
-Properti yang terisi otomatis tersebut kemudian diolah oleh method pengembangan `hitungNilaiStok()`:
-* `public function hitungNilaiStok() {`
-* `    return $this->harga * $this->stok;`
-* `}`
-
----
-
-#### C. Kesimpulan Pembahasan
-1. **Otomatisasi Inisialisasi:** `__construct()` memangkas baris kode pembuatan objek sehingga program lebih bersih dan efisien.
-2. **Isolasi Konteks Data:** Penggunaan `$this` memastikan setiap objek mengelola nilainya masing-masing secara independen.
-3. **Kepastian Data:** Penggunaan parameter pada constructor mencegah terciptanya objek tanpa data pendukung yang lengkap.
+1. **Otomatisasi inisialisasi** – `__construct()` memangkas baris kode sehingga program lebih bersih dan efisien.
+2. **Isolasi konteks data** – `$this` memastikan tiap objek mengelola nilainya sendiri secara independen.
+3. **Kepastian data** – parameter constructor mencegah objek terbentuk tanpa data yang lengkap.
